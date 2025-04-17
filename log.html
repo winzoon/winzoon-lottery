@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Golak Lottery - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #1d1b47, #1b1464, #00c2ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-container, .signup-container, .forgot-container {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      width: 100%;
+      max-width: 370px;
+      padding: 40px 30px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo img {
+      width: 55px;
+      margin-bottom: 5px;
+    }
+
+    .logo h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px 20px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 15px;
+      transition: 0.2s ease-in-out;
+    }
+
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .input-field:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .login-btn, .signup-btn, .reset-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 22px;
+      background: linear-gradient(135deg, #6c00ff, #00bfff);
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-btn:hover, .signup-btn:hover, .reset-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 191, 255, 0.5);
+    }
+
+    .signup-link, .login-link, .forgot-link {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 18px;
+      color: #f2f2f2;
+    }
+
+    .signup-link a, .login-link a, .forgot-link a {
+      color: #00bfff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover, .login-link a:hover, .forgot-link a:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 20px 0 10px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .social-icons img {
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.3));
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.1);
+    }
+
+    .error-message {
+      color: #ff6b6b;
+      font-size: 13px;
+      margin-top: -5px;
+      margin-bottom: 5px;
+      padding-left: 20px;
+      display: none;
+    }
+
+    .success-message {
+      color: #4caf50;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+
+    @media (min-width: 480px) {
+      .login-container, .signup-container, .forgot-container {
+        padding: 40px 35px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div class="login-container" id="login-form">
+    <div class="logo">
+      <img src="logo.png" alt="logo"/>
+      <h2>Winzoon Lottery</h2>
+    </div>
+    <input type="email" class="input-field" id="login-email" placeholder="Email">
+    <div class="password-container">
+      <input type="password" class="input-field" id="login-password" placeholder="Password">
+      <span class="toggle-password" onclick="togglePassword('login-password', this)">Show</span>
+    </div>
+   
+    <button class="login-btn" onclick="login()">Login →</button>
+    <div class="error-message" id="login-error"></div>
+    <div class="forgot-link">
+      <a href="javascript:void(0)" id="show-forgot">Forgot password?</a>
+    </div>
+    <div class="success-message" id="login-success"></div>
+    <div class="signup-link">
+      Don't have an account? <a href="javascript:void(0)" id="show-signup">Signup</a>
+    </div>
+    <div class="divider">or continue with</div>
+    <div class="social-icons">
+      <img src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook" onclick="socialLogin('facebook')"/>
+      <img src="https://img.icons8.com/color/48/google-logo.png" alt="google" onclick="socialLogin('google')"/>
+      <img src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="apple" onclick="socialLogin('apple')"/>
+    </div>
+  </div>
+
+  <!-- Signup Form -->
+  <div class="signup-container" id="signup-form" style="display: none;">
+    <div class="logo">
+      <img src="logo.png" alt="logo"/>
+      <h2>Create Account</h2>
+    </div>
+    <input type="text" class="input-field" id="signup-name" placeholder="Full Name">
+    <div class="error-message" id="name-error"></div>
+    <input type="email" class="input-field" id="signup-email" placeholder="Email">
+    <div class="error-message" id="email-error"></div>
+    <div class="password-container">
+      <input type="password" class="input-field" id="signup-password" placeholder="Password">
+      <span class="toggle-password" onclick="togglePassword('signup-password', this)">Show</span>
+    </div>
+    <div class="error-message" id="password-error"></div>
+    <button class="signup-btn" onclick="signup()">Signup →</button>
+    <div class="success-message" id="signup-success"></div>
+    <div class="login-link">
+      Already have an account? <a href="javascript:void(0)" id="show-login">Login</a>
+    </div>
+  </div>
+
+  <!-- Forgot Password Form -->
+  <div class="forgot-container" id="forgot-form" style="display: none;">
+    <div class="logo">
+      <img src="logo.png" alt="logo"/>
+      <h2>Reset Password</h2>
+    </div>
+    <input type="email" class="input-field" id="forgot-email" placeholder="Enter your email">
+    <div class="error-message" id="forgot-error"></div>
+    <button class="reset-btn" onclick="sendResetLink()">Send Reset Link</button>
+    <div class="success-message" id="forgot-success"></div>
+    <div class="login-link">
+      Remember your password? <a href="javascript:void(0)" id="show-login-from-forgot">Login</a>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Toggle Forms
+    document.getElementById("show-signup").addEventListener("click", () => {
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("signup-form").style.display = "block";
+      document.getElementById("forgot-form").style.display = "none";
+      resetForms();
+    });
+
+    document.getElementById("show-login").addEventListener("click", () => {
+      document.getElementById("signup-form").style.display = "none";
+      document.getElementById("login-form").style.display = "block";
+      document.getElementById("forgot-form").style.display = "none";
+      resetForms();
+    });
+
+    document.getElementById("show-forgot").addEventListener("click", () => {
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("signup-form").style.display = "none";
+      document.getElementById("forgot-form").style.display = "block";
+      resetForms();
+    });
+
+    document.getElementById("show-login-from-forgot").addEventListener("click", () => {
+      document.getElementById("forgot-form").style.display = "none";
+      document.getElementById("signup-form").style.display = "none";
+      document.getElementById("login-form").style.display = "block";
+      resetForms();
+    });
+
+    // Toggle Password Visibility
+    function togglePassword(inputId, element) {
+      const input = document.getElementById(inputId);
+      if (input.type === "password") {
+        input.type = "text";
+        element.textContent = "Hide";
+      } else {
+        input.type = "password";
+        element.textContent = "Show";
+      }
+    }
+
+    // Reset all forms and messages
+    function resetForms() {
+      // Clear all inputs
+      document.querySelectorAll('.input-field').forEach(input => {
+        input.value = '';
+      });
+      
+      // Hide all error messages
+      document.querySelectorAll('.error-message').forEach(msg => {
+        msg.style.display = 'none';
+      });
+      
+      // Hide all success messages
+      document.querySelectorAll('.success-message').forEach(msg => {
+        msg.style.display = 'none';
+      });
+    }
+
+    // Validate Email
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    // Validate Password (at least 6 characters)
+    function validatePassword(password) {
+      return password.length >= 6;
+    }
+
+    // Login Function
+    function login() {
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-password").value;
+      const errorElement = document.getElementById("login-error");
+      const successElement = document.getElementById("login-success");
+
+      // Reset messages
+      errorElement.style.display = "none";
+      successElement.style.display = "none";
+
+      // Validation
+      if (!email || !password) {
+        errorElement.textContent = "Please enter both email and password.";
+        errorElement.style.display = "block";
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        errorElement.textContent = "Please enter a valid email address.";
+        errorElement.style.display = "block";
+        return;
+      }
+
+      // Simulate authentication (in a real app, this would be an API call)
+      if (password === "demo123" && email === "demo@example.com") {
+        // Successful login
+        successElement.textContent = "Login successful! Redirecting...";
+        successElement.style.display = "block";
+        
+        // Store user session (simulated)
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('email', email);
+        
+        // Redirect after delay
+        setTimeout(() => {
+          window.location.href = "main.html";
+        }, 1500);
+      } else {
+        // Failed login
+        errorElement.textContent = "Invalid email or password.";
+        errorElement.style.display = "block";
+      }
+    }
+
+    // Signup Function
+    function signup() {
+      const name = document.getElementById("signup-name").value.trim();
+      const email = document.getElementById("signup-email").value.trim();
+      const password = document.getElementById("signup-password").value;
+      
+      // Get all error elements
+      const nameError = document.getElementById("name-error");
+      const emailError = document.getElementById("email-error");
+      const passwordError = document.getElementById("password-error");
+      const successElement = document.getElementById("signup-success");
+
+      // Reset all errors and success message
+      [nameError, emailError, passwordError].forEach(el => {
+        el.style.display = "none";
+      });
+      successElement.style.display = "none";
+
+      // Validate inputs
+      let isValid = true;
+
+      if (!name) {
+        nameError.textContent = "Full name is required";
+        nameError.style.display = "block";
+        isValid = false;
+      }
+
+      if (!email) {
+        emailError.textContent = "Email is required";
+        emailError.style.display = "block";
+        isValid = false;
+      } else if (!validateEmail(email)) {
+        emailError.textContent = "Please enter a valid email";
+        emailError.style.display = "block";
+        isValid = false;
+      }
+
+      if (!password) {
+        passwordError.textContent = "Password is required";
+        passwordError.style.display = "block";
+        isValid = false;
+      } else if (!validatePassword(password)) {
+        passwordError.textContent = "Password must be at least 6 characters";
+        passwordError.style.display = "block";
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      // Simulate successful signup (in a real app, this would be an API call)
+      successElement.textContent = "Account created successfully! Redirecting to login...";
+      successElement.style.display = "block";
+      
+      // Store user data (simulated)
+      const userData = {
+        name,
+        email,
+        password // In a real app, you would hash the password before storing
+      };
+      localStorage.setItem('userData', JSON.stringify(userData));
+      
+      // Reset form and show login after delay
+      setTimeout(() => {
+        resetForms();
+        document.getElementById("signup-form").style.display = "none";
+        document.getElementById("login-form").style.display = "block";
+      }, 2000);
+    }
+
+    // Forgot Password Function
+    function sendResetLink() {
+      const email = document.getElementById("forgot-email").value.trim();
+      const errorElement = document.getElementById("forgot-error");
+      const successElement = document.getElementById("forgot-success");
+
+      // Reset messages
+      errorElement.style.display = "none";
+      successElement.style.display = "none";
+
+      // Validation
+      if (!email) {
+        errorElement.textContent = "Please enter your email address.";
+        errorElement.style.display = "block";
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        errorElement.textContent = "Please enter a valid email address.";
+        errorElement.style.display = "block";
+        return;
+      }
+
+      // Simulate sending reset link (in a real app, this would be an API call)
+      successElement.textContent = "Password reset link sent to your email!";
+      successElement.style.display = "block";
+      
+      // Clear the input field
+      document.getElementById("forgot-email").value = "";
+    }
+
+    // Social Login Function
+    function socialLogin(provider) {
+      alert(`Redirecting to ${provider} login...`);
+      // In a real app, this would redirect to the provider's OAuth endpoint
+      // For demo purposes, we'll simulate a successful login
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('email', `social_${provider}_user@example.com`);
+      window.location.href = "index.html";
+    }
+
+    // Check if user is already logged in (for demonstration)
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        window.location.href = "index.html";
+      }
+      
+      // Add enter key functionality
+      document.querySelectorAll('.input-field').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            if (document.getElementById("login-form").style.display !== 'none') {
+              login();
+            } else if (document.getElementById("signup-form").style.display !== 'none') {
+              signup();
+            } else if (document.getElementById("forgot-form").style.display !== 'none') {
+              sendResetLink();
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

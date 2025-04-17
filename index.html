@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golak Lottery</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #e63946;
+      --secondary: #1d3557;
+      --light: #f1faee;
+    }
+    .nav-link.active {
+  color: red !important;
+  font-weight: bold;
+}
+
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+    }
+    
+    /* Header */
+    .top-bar {
+      background: var(--secondary);
+      color: white;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    
+    .navbar {
+      background: white !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--secondary) !important;
+    }
+    
+    .navbar-brand span {
+      color: var(--primary);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      color: var(--secondary) !important;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('girl-with-casino-dibs-and-roulette-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    
+    .hero h1 span {
+      color: var(--primary);
+    }
+    
+    .hero-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    
+    .hero-btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    
+    /* Features */
+    .features {
+      background: var(--light);
+      padding: 60px 0;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.3s;
+      height: 100%;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    /* Countdown */
+    .countdown {
+      background: var(--secondary);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    .countdown-timer {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 15px 0;
+    }
+    
+    /* Lottery Cards */
+    .lottery-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      margin-bottom: 30px;
+    }
+    
+    .lottery-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .lottery-img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+    }
+    
+    .lottery-price {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    /* Winners */
+    .winner-card {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .winner-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      margin: 0 auto 15px;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 80px 0;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .countdown-timer {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <i class="fas fa-phone-alt"></i> +92 315-6108005 |
+          <i class="fas fa-envelope"></i>  Winzoon01@gmail.com |
+        </div>
+        <div class="col-md-6 text-end">
+          <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.png" alt="Golak Logo" width="40" height="40" class="me-2">
+        Winzoon<span>Lottery</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="main.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lottries.html">Lotteries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Winners</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="result.html">Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-danger" href="log.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h4>TRY YOUR LUCK TODAY</h4>
+    <h1>Win Big With <span>Winzoon Lottery</span></h1>
+    <h6 class="lead mb-4">Join thousands of winners who changed their lives with our trusted lottery system</h6>
+    <div class="d-flex justify-content-center gap-3">
+    </div>
+  </div>
+</section>
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Secure</h3>
+            <p>100% secure platform with encrypted transactions</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Instant</h3>
+            <p>Instant results and quick prize distribution</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3>Big Prizes</h3>
+            <p>Life-changing jackpots every week</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Dedicated customer support team</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Current Lotteries -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h5 class="text-danger">OUR LOTTERIES</h5>
+      <h2>Choose Your <span class="text-primary">LUCK</span></h2>
+    </div>
+    <div class="row">           
+      <!-- Box 1 - Mobile Phone -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="lottery-card">
+          <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb" class="lottery-img" alt="Mobile Phone">
+          <div class="p-4">
+             <h3 class="lottery-price">Mobile Phone Lottery</h3>
+            <p>Win the latest smartphone and the price of this mobile phone is 50,000 rupees.</p>
+            <div class="countdown-timer mb-3" id="countdown1"></div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="lottery-price">Only investment :Rs. 50</h4>
+              <a href="box1.html" target="_blank" class="btn btn-sm btn-danger">Join Now</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Box 2 - Watch -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="lottery-card">
+          <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49" class="lottery-img" alt="Watch">
+          <div class="p-4">
+            <h3 class="lottery-price">Smart Watch Lottery</h3>
+            <p>Win a premium smartwatch and the price of this smart watch is 30,000 rupees.</p>
+            <div class="countdown-timer mb-3" id="countdown2"></div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="lottery-price">Only investment  Rs. 30</h4>
+              <a href="box2.html" target="_blank" class="btn btn-sm btn-danger">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Box 3 - Laptop -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="lottery-card">
+          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45" class="lottery-img" alt="Laptop">
+          <div class="p-4">
+            <h4 class="lottery-price">Laptop Lottery</h4>
+            <p>Win a high-end laptop and the price of this laptop is 80,000 rupees.</p>
+            <div class="countdown-timer mb-3" id="countdown3"></div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="lottery-price">Only Investment: Rs. 80</h4>
+              <a href="box3.html" target="_blank" class="btn btn-sm btn-danger">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Box 4 - Motorbike -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="lottery-card">
+          <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39" class="lottery-img" alt="Motorbike">
+          <div class="p-4">
+             <h3 class="lottery-price">Motorbike Lottery</h3>
+            <p>Win a brand new bike and the price of this Motorbike is 160,000 rupees.</p>
+            <div class="countdown-timer mb-3" id="countdown4"></div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="lottery-price">Only Investment: Rs. 100</h4>
+              <a href="box4.html" target="_blank" class="btn btn-sm btn-danger">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Box 5 - School Bag -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="lottery-card">
+          <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7" class="lottery-img" alt="School Bag">
+          <div class="p-4">
+             <h3 class="lottery-price">School Bag</h3>
+            <p>Win a complete school bag and the price of this school bag is 6000 rupees.</p>
+            <div class="countdown-timer mb-3" id="countdown5"></div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="lottery-price">Only Investment: Rs. 5</h4>
+              <a href="box5.html" target="_blank" class="btn btn-sm btn-danger">Join Now</a>
+            </div>
+          </div>  
+          </div>
+      </div>
+      <!-- Box 6 - Computer -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="lottery-card">
+          <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d" class="lottery-img" alt="Computer">
+          <div class="p-4">
+            <h3 class="lottery-price">Desktop Computer</h3>
+            <p>Win a powerful PC and the price of this Desktop Computer is 25,000 rupees.</p>
+            <div class="countdown-timer mb-3" id="countdown6"></div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="lottery-price">Only Investment: Rs. 30</h4>
+              <a href="box6.html" target="_blank" class="btn btn-sm btn-danger">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+// Function to initialize countdowns sequentially
+function initializeCountdowns() {
+  const countdowns = [
+    { id: "countdown1", days: 15, hours: 0, minutes: 0, seconds: 0 },
+    { id: "countdown2", days: 15, hours: 0, minutes: 0, seconds: 0 },
+    { id: "countdown3", days: 15, hours: 0, minutes: 0, seconds: 0 },
+    { id: "countdown4", days: 15, hours: 0, minutes: 0, seconds: 0 },
+    { id: "countdown5", days: 15, hours: 0, minutes: 0, seconds: 0 },
+    { id: "countdown6", days: 15, hours: 0, minutes: 0, seconds: 0 }
+  ];
+  countdowns.forEach((countdown, index) => {
+    setTimeout(() => {
+      startCountdown(countdown.id, countdown.days, countdown.hours, countdown.minutes, countdown.seconds);
+    }, index * 1000); // Start each countdown 1 second after the previous one
+  });
+}
+// Function to start individual countdown
+function startCountdown(elementId, days, hours, minutes, seconds) {
+  const countdownElement = document.getElementById(elementId);
+  
+  function updateCountdown() {
+    // Format the time
+    const formattedTime = 
+      `${days.toString().padStart(2, '0')}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+    
+    countdownElement.textContent = formattedTime;
+    // Decrement the time
+    if (seconds > 0) {
+      seconds--;
+    } else {
+      if (minutes > 0) {
+        minutes--;
+        seconds = 59;
+      } else {
+        if (hours > 0) {
+          hours--;
+          minutes = 59;
+          seconds = 59;
+        } else {
+          if (days > 0) {
+            days--;
+            hours = 23;
+            minutes = 59;
+            seconds = 59;
+          } else {
+            clearInterval(timer);
+            countdownElement.textContent = "Draw Completed!";
+            return;
+          }
+        }
+      }
+    }
+  }
+  
+  // Update immediately
+  updateCountdown();
+  
+  // Then update every second
+  const timer = setInterval(updateCountdown, 1000);
+}
+
+// Initialize all countdowns when page loads
+window.onload = initializeCountdowns;
+</script>
+  <!-- Recent Winners --><section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h5 class="text-danger">OUR WINNERS</h5>
+        <h2>Recent <span class="text-primary">Winners</span></h2>
+      </div>
+      
+      <div class="row">
+        <!-- Winner 1 - iPhone 15 Pro (Rs. 450,000) -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="winner-card text-center p-3 border rounded">
+            <img src="WhatsApp Image 2025-04-10 at 13.36.31.jpeg" class="winner-img rounded-circle mb-3" width="100" alt="Winner">
+            <h4>Gul sher</h4>
+            <p class="text-muted mb-1">+92 300 1234567</p>
+            <p class="text-danger fw-bold">infinx s5 (Rs. 50,000)</p>
+            <small class="text-muted">Daily Lottery - 15 Jan 2023</small>
+          </div>
+        </div>
+        
+        <!-- Winner 2 - Rolex Watch (Rs. 350,000) -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="winner-card text-center p-3 border rounded">
+            <img src="images.jpeg" class="winner-img rounded-circle mb-3" width="100" alt="Winner">
+            <h4>Ayesha Khan</h4>
+            <p class="text-muted mb-1">+92 301 2345678</p>
+            <p class="text-danger fw-bold">Samrt Watch (Rs. 5000)</p>
+            <small class="text-muted">Weekly Jackpot - 8 Jan 2023</small>
+          </div>
+        </div>
+        
+        <!-- Winner 3 - Dell XPS Laptop (Rs. 250,000) -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="winner-card text-center p-3 border rounded">
+            <img src="hamza.JPG" class="winner-img rounded-circle mb-3" width="100" alt="Winner">
+            <h4>Usman Ahmed</h4>
+            <p class="text-muted mb-1">+92 302 3456789</p>
+            <p class="text-danger fw-bold">HP Laptop (Rs. 60,000)</p>
+            <small class="text-muted">Daily Lottery - 5 Jan 2023</small>
+          </div>
+        </div>
+        <!-- Winner 4 - Yamaha Bike (Rs. 550,000) -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="winner-card text-center p-3 border rounded">
+            <img src="rania.png" class="winner-img rounded-circle mb-3" width="100" alt="Winner">
+            <h4>Fatima Malik</h4>
+            <p class="text-muted mb-1">+92 303 4567890</p>
+            <p class="text-danger fw-bold">Yamaha Bike (Rs. 120,000)</p>
+            <small class="text-muted">Mega Draw - 1 Jan 2023</small>
+          </div>
+        </div>
+     <!-- Delivery Policy Section -->
+     <div class="mt-5 bg-white p-4 rounded shadow-sm">
+      <div class="text-center mb-4">
+        <h5 class="text-danger">DELIVERY POLICY</h5>
+        <h2>Prize <span class="text-primary">Collection</span> Process</h2>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="p-3">
+            <h4 class="text-primary mb-3"><i class="fas fa-gift me-2"></i> Prize Delivery</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Winners notified immediately after draw</li>
+              <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Prizes delivered via TCS courier</li>
+              <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 3-5 working days delivery time</li>
+              <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Pakistan-wide delivery coverage</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="p-3">
+            <h4 class="text-primary mb-3"><i class="fas fa-clipboard-check me-2"></i> Requirements</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-exclamation-circle text-warning me-2"></i> Complete & accurate address required</li>
+              <li class="mb-2"><i class="fas fa-exclamation-circle text-warning me-2"></i> Original CNIC must be presented</li>
+              <li class="mb-2"><i class="fas fa-exclamation-circle text-warning me-2"></i> Recipient must be 18+ years old</li>
+              <li class="mb-2"><i class="fas fa-exclamation-circle text-warning me-2"></i> After 2 attempts, collect from TCS office</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="alert alert-info mt-4">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-shield-alt fa-2x me-3"></i>
+          <div>
+            <h5 class="alert-heading">Security Notice</h5>
+            <p class="mb-0">We never ask for payment to release prizes. Beware of scams.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <!-- Gradient Colored Footer -->
+<footer class="footer text-white pt-5 pb-4" style=" background: linear-gradient(135deg, #000000fd, #da1313);">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Brand Section -->
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="logo.png" alt="Golak Lottery" width="50" class="me-3 rounded-circle bg-white p-1">
+          <h4 class="fw-bold mb-0">Winzoon<span class="text-warning">Lottery</span></h4>
+        </div>
+        <p class="text-light">Pakistan's trusted lottery platform since 2023.</p>
+        <div class="d-flex gap-2 mt-3">
+          <img src="https://via.placeholder.com/120x40?text=Google+Play" alt="Google Play" class="img-fluid rounded">
+          <img src="https://via.placeholder.com/120x40?text=App+Store" alt="App Store" class="img-fluid rounded">
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-4 col-6">
+        <h5 class="fw-semibold mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="lotteries.html" class="footer-link">Lotteries</a></li>
+          <li><a href="results.html" class="footer-link">Results</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="col-lg-2 col-md-4 col-6">
+        <h5 class="fw-semibold mb-3">Support</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="footer-link">Help Center</a></li>
+          <li><a href="#" class="footer-link">FAQs</a></li>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-4 col-md-4">
+        <h5 class="fw-semibold mb-3">Contact Us</h5>
+        <ul class="list-unstyled text-light">
+          <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-warning"></i> 123 Main Street, Lahore</li>
+          <li class="mb-2"><i class="fas fa-phone me-2 text-warning"></i> +92 315-6108005</li>
+          <li><i class="fas fa-envelope me-2 text-warning"></i> Winzoon01@gmail.com</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="my-4 text-white">
+
+    <!-- Footer Bottom -->
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="text-light small mb-0">© 2023 Winzoon Lottery. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-link {
+    display: block;
+    color: #ffffffcc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #ffc107;
+    transform: translateX(6px);
+  }
+
+  .social-icon {
+    color: #ffffffcc;
+    font-size: 1.2rem;
+    margin-left: 12px;
+    transition: color 0.3s ease;
+  }
+
+  .social-icon:hover {
+    color: #ffc107;
+  }
+</style>
+
+</body>
+</html>
